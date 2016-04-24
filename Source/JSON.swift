@@ -84,17 +84,19 @@ public enum JSON {
     }
 
     public var bool: Bool? {
-        switch self {
-        case .booleanValue(let b): return b
-        default: return nil
+        if case .booleanValue(let b) = self {
+            return b
         }
+        
+        return nil
     }
 
     public var double: Double? {
-        switch self {
-        case .numberValue(let n): return n
-        default: return nil
+        if case .numberValue(let n) = self {
+            return n
         }
+        
+        return nil
     }
 
     public var int: Int? {
@@ -112,24 +114,27 @@ public enum JSON {
     }
 
     public var string: String? {
-        switch self {
-        case .stringValue(let s): return s
-        default: return nil
+        if case .stringValue(let s) = self {
+            return s
         }
+        
+        return nil
     }
 
     public var array: [JSON]? {
-        switch self {
-        case .arrayValue(let array): return array
-        default: return nil
+        if case .arrayValue(let array) = self {
+            return array
         }
+        
+        return nil
     }
 
     public var dictionary: [String: JSON]? {
-        switch self {
-        case .objectValue(let dictionary): return dictionary
-        default: return nil
+        if case .objectValue(let dictionary) = self {
+            return dictionary
         }
+        
+        return nil
     }
 
     public func get<T>() -> T? {
